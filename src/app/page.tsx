@@ -9,12 +9,17 @@ const iconMap: Record<string, string> = {
   linkedin: "/linkedin.svg",
   resume: "/file.svg",
   portfolio: "/portfolio.svg",
+  "volunteer @ sfcvc": "/volunteer.svg",
 };
 
 export default function Home() {
   const [showQR, setShowQR] = useState(false);
+  const [showLinkedInQR, setShowLinkedInQR] = useState(false);
   return (
-    <div className="min-h-screen flex flex-col items-center bg-background pt-10 pb-10">
+    <div
+      className="min-h-screen flex flex-col items-center bg-background pt-10 pb-20"
+      style={{ touchAction: "pan-y", overscrollBehavior: "none" }}
+    >
       {/* Background photo + Profile/info overlay */}
       <div className="w-full relative mx-auto mb-4">
         <div className="absolute inset-0 h-40 sm:h-56 z-0">
@@ -98,6 +103,34 @@ export default function Home() {
         {profile.links.map((link) => {
           const key = link.label.toLowerCase();
           const icon = iconMap[key];
+          if (key === "linkedin qr code") {
+            return (
+              <div key={link.label} className="flex flex-col items-center w-full">
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowLinkedInQR((v) => !v);
+                  }}
+                  className="w-full py-2 px-4 rounded-full bg-foreground text-background text-center font-medium text-xl shadow hover:bg-foreground/90 transition-colors border border-foreground/10 flex items-center gap-4 justify-center cursor-pointer"
+                >
+                  <Image src="/linkedin.svg" alt="LinkedIn QR Code" width={24} height={24} className="inline-block" />
+                  <span>{link.label}</span>
+                </a>
+                {showLinkedInQR && (
+                  <div className="flex flex-col items-center mt-4 animate-fade-in">
+                    <Image
+                      src="/linkedin-qrcode.webp"
+                      alt="LinkedIn QR Code"
+                      width={200}
+                      height={200}
+                      className="mb-1"
+                    />
+                    <span className="text-xs text-foreground/60">Scan to connect on LinkedIn</span>
+                  </div>
+                )}
+              </div>
+            );
+          }
           return (
             <a
               key={link.url}
@@ -106,7 +139,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="w-full py-2 px-4 rounded-full bg-foreground text-background text-center font-medium text-xl shadow hover:bg-foreground/90 transition-colors border border-foreground/10 flex items-center gap-4 justify-center"
             >
-              <Image src={icon} alt=" " width={28} height={28} className="inline-block" />
+              <Image src={icon} alt=" " width={24} height={24} className="inline-block" />
               <span>{link.label}</span>
             </a>
           );
