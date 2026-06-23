@@ -4,7 +4,7 @@ This is a personal Linktree-style web app built with Next.js for sharing my link
 
 ## Tech Stack
 
-Next.js, React, Typescript, Tailwind CSS, Vercel
+Next.js, React, Typescript, Tailwind CSS, Vercel, Claude Code
 
 ## License
 
