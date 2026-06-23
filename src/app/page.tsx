@@ -39,11 +39,10 @@ export default function Home() {
             priority
           />
         </div>
-        <h1 className="text-2xl font-bold text-foreground leading-tight pt-2">{profile.name}</h1>
-        <div className="text-base text-foreground/80 font-medium">
-          Specialist @ Apple | Software Engineer | UCSD Math & Computer Science | Chief of Systems and Operations @
-          Chinatown Volunteer Coalition
-        </div>
+        <h1 className="text-2xl font-medium tracking-tight text-foreground leading-tight pt-2">{profile.name}</h1>
+        <p className="text-base text-foreground/70 font-light leading-snug">
+          {profile.headline.join(" | ")}
+        </p>
         <div className="text-base text-foreground/60 flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +110,7 @@ export default function Home() {
                     e.preventDefault();
                     setShowLinkedInQR((v) => !v);
                   }}
-                  className="w-full py-2 px-4 rounded-full bg-foreground text-background text-center font-medium text-xl shadow hover:bg-foreground/90 transition-colors border border-foreground/10 flex items-center gap-4 justify-center cursor-pointer"
+                  className="w-full py-2 px-4 rounded-lg bg-foreground text-background text-center font-medium text-base shadow-sm hover:opacity-90 transition-opacity border border-foreground/10 flex items-center gap-4 justify-center cursor-pointer"
                 >
                   <Image src="/linkedin.svg" alt="LinkedIn QR Code" width={24} height={24} className="inline-block" />
                   <span>{link.label}</span>
@@ -137,7 +136,7 @@ export default function Home() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2 px-4 rounded-full bg-foreground text-background text-center font-medium text-xl shadow hover:bg-foreground/90 transition-colors border border-foreground/10 flex items-center gap-4 justify-center"
+              className="w-full py-2 px-4 rounded-lg bg-foreground text-background text-center font-medium text-base shadow-sm hover:opacity-90 transition-opacity border border-foreground/10 flex items-center gap-4 justify-center"
             >
               <Image src={icon} alt=" " width={24} height={24} className="inline-block" />
               <span>{link.label}</span>

@@ -1,6 +1,12 @@
 export const profile = {
   name: "Kenny Zhang",
   avatar: "/pfp.webp",
+  headline: [
+    "Software Engineer & Technical Specialist",
+    "Full Stack · Cloud · QA",
+    "Python · TypeScript · React",
+    "Open to SWE & Product Support Roles",
+  ],
   links: [
     { label: "GitHub", url: "https://github.com/kennytrbl" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/kennyzhang5/" },
